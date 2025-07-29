@@ -1,0 +1,20 @@
+{
+  "watch": [
+    "app.js",
+    "routes/",
+    "models/",
+    "controllers/",
+    "middleware.js",
+    "utils/",
+    "views/"
+  ],
+  "ext": "js,json,ejs",
+  "ignore": [
+    "node_modules/",
+    "public/",
+    ".git/"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  }
+} 

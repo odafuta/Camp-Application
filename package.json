@@ -1,0 +1,54 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Campground review application - Portfolio project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "prod": "NODE_ENV=production node app.js",
+    "build": "echo 'No build step required for Node.js app'",
+    "lint": "echo 'Add linting configuration if needed'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odafuta/Camp-Application.git"
+  },
+  "author": "odafuta (based on kenfdev's YelpCamp-ja)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/odafuta/Camp-Application/issues"
+  },
+  "homepage": "https://github.com/odafuta/Camp-Application#readme",
+  "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.13.2",
+    "cloudinary": "^1.27.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-session": "^1.17.2",
+    "helmet": "^4.6.0",
+    "joi": "^17.4.2",
+    "method-override": "^3.0.0",
+    "mongodb": "^4.1.3",
+    "mongoose": "^5.13.7",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
+    "sanitize-html": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

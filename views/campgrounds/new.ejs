@@ -21,11 +21,17 @@
                 <label class="form-label" for="price">価格</label>
                 <div class="input-group">
                     <span class="input-group-text" id="price-label">¥</span>
-                    <input type="text" class="form-control" id="price" placeholder="0" aria-label="価格"
-                        aria-describedby="price-label" name="campground[price]" required>
+                    <input type="number" class="form-control" id="price" placeholder="0" aria-label="価格"
+                        aria-describedby="price-label" name="campground[price]" required min="0" step="1">
                     <div class="valid-feedback">
                         OK!
                     </div>
+                    <div class="invalid-feedback">
+                        価格は0以上の数値で入力してください
+                    </div>
+                </div>
+                <div id="price-error" class="text-danger mt-1" style="display: none;">
+                    <small>価格は数値のみ入力してください（例：1000、1500）</small>
                 </div>
             </div>
             <div class="mb-3">
@@ -41,10 +47,54 @@
                 <input class="form-control" type="file" id="image" name="image" multiple>
             </div>
             <div class="mb-3">
-                <button class="btn btn-success">登録する</button>
+                <button class="btn btn-success" type="submit">登録する</button>
             </div>
 
         </form>
         <a href="/campgrounds">一覧に戻る</a>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const priceInput = document.getElementById('price');
+    const priceError = document.getElementById('price-error');
+    const form = document.querySelector('.validated-form');
+    
+    // リアルタイムバリデーション
+    priceInput.addEventListener('input', function() {
+        const value = this.value;
+        
+        // 空の場合はエラーを非表示
+        if (value === '') {
+            priceError.style.display = 'none';
+            this.classList.remove('is-invalid');
+            return;
+        }
+        
+        // 数値でない場合、または負の数の場合
+        if (isNaN(value) || parseFloat(value) < 0) {
+            priceError.style.display = 'block';
+            this.classList.add('is-invalid');
+            this.classList.remove('is-valid');
+        } else {
+            priceError.style.display = 'none';
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+        }
+    });
+    
+    // フォーム送信時のバリデーション
+    form.addEventListener('submit', function(e) {
+        const priceValue = priceInput.value;
+        
+        if (priceValue === '' || isNaN(priceValue) || parseFloat(priceValue) < 0) {
+            e.preventDefault();
+            priceError.style.display = 'block';
+            priceInput.classList.add('is-invalid');
+            priceInput.focus();
+            return false;
+        }
+    });
+});
+</script>
